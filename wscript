@@ -8,8 +8,8 @@ def configure(conf):
 def build(bld):
     if bld.env['KERNEL_STACK']:
       bld.build_a_script('dce', needed = ['core', 'internet', 'dce', 'point-to-point', 'csma' ],
-				  target='bin/test1',
-				  source=['test1.cc'],
+				  target='bin/corenet1',
+				  source=['corenet1.cc'],
 #				  linkflags=['-L/usr/local/lib'],
 #				  lib=['foolib']
 				  )
