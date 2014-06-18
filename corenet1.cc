@@ -164,7 +164,7 @@ NS_LOG_INFO ("Assign IP Addresses.");
 
   NS_LOG_INFO ("Run Simulation.");
 
-  Simulator::Stop (Seconds (10.0));
+  Simulator::Stop (Seconds (2.0));
   Simulator::Run ();
   Simulator::Destroy ();
   NS_LOG_INFO ("Done.");
