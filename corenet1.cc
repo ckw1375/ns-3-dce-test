@@ -104,25 +104,17 @@ NS_LOG_INFO ("Assign IP Addresses.");
   ApplicationContainer ClientApps0 = dce.Install (c.Get (0));
   ClientApps0.Start (Seconds (1));
   ClientApps0.Stop (Seconds (10));
-  
-  // Launch iperf server on node 0
-  dce.SetBinary ("iperf");
-  dce.ResetArguments ();
-  dce.ResetEnvironment ();
-  dce.AddArgument ("-s");
-  dce.AddArgument ("-P");
-  dce.AddArgument ("1");
-  ApplicationContainer SerApps0 = dce.Install (c.Get (0));
-  SerApps0.Start (Seconds (1));
-  SerApps0.Stop (Seconds (10));
-  
-  dce.SetBinary ("wget");
-  dce.ResetArguments ();
-  dce.ResetEnvironment ();
-  dce.AddArgument ("-r");
-  dce.AddArgument ("http://10.1.2.2/index.html");
-  ApplicationContainer clientHttp = dce.Install (c.Get (0));
-  clientHttp.Start (Seconds (1));
+
+  // Launch iperf server on node 2
+   dce.SetBinary ("iperf");
+   dce.ResetArguments ();
+   dce.ResetEnvironment ();
+   dce.AddArgument ("-s");
+   dce.AddArgument ("-P");
+   dce.AddArgument ("1");
+   ApplicationContainer SerApps2 = dce.Install (c.Get (2));
+   SerApps2.Start (Seconds (1));
+   SerApps2.Stop (Seconds (10));
   
  // Launch iperf client on node 2
   dce.SetBinary ("iperf");
@@ -137,17 +129,28 @@ NS_LOG_INFO ("Assign IP Addresses.");
   ApplicationContainer ClientApps2 = dce.Install (c.Get (2));
   ClientApps2.Start (Seconds (1));
   ClientApps2.Stop (Seconds (10));
-  
- // Launch iperf server on node 2
+
+ // Launch iperf server on node 0
   dce.SetBinary ("iperf");
   dce.ResetArguments ();
   dce.ResetEnvironment ();
   dce.AddArgument ("-s");
   dce.AddArgument ("-P");
   dce.AddArgument ("1");
-  ApplicationContainer SerApps2 = dce.Install (c.Get (2));
-  SerApps2.Start (Seconds (1));
-  SerApps2.Stop (Seconds (10));
+  ApplicationContainer SerApps0 = dce.Install (c.Get (0));
+  SerApps0.Start (Seconds (1));
+  SerApps0.Stop (Seconds (10));
+  
+  //Launch wget on node 0
+  dce.SetBinary ("wget");
+  dce.ResetArguments ();
+  dce.ResetEnvironment ();
+  dce.AddArgument ("-r");
+  dce.AddArgument ("http://10.1.2.2/index.html");
+  ApplicationContainer clientHttp = dce.Install (c.Get (0));
+  clientHttp.Start (Seconds (1));
+
+ // Launch thttpd on node 2
   dce.SetBinary ("thttpd");
   dce.ResetArguments ();
   dce.ResetEnvironment ();

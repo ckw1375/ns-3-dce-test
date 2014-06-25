@@ -1,1 +1,3 @@
-~/dce/source/ns-3-dce/waf --run "corenet1" --vis
+%~/dce/source/ns-3-dce/waf --run "corenet1" --vis
+~/dce/source/ns-3-dce/waf --run "corenet1"
+
