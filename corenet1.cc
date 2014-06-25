@@ -130,6 +130,7 @@ NS_LOG_INFO ("Assign IP Addresses.");
   ClientApps2.Start (Seconds (1));
   ClientApps2.Stop (Seconds (10));
 
+
  // Launch iperf server on node 0
   dce.SetBinary ("iperf");
   dce.ResetArguments ();
